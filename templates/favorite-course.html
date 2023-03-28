@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>favorite course</title>
+    <title></title>
 </head>
 <body>
-You entered your Favorite Course as: {{ subject }} {{ course_number }}
+You entered your favorite course as: {{ request.args.get('subject') }} {{ request.args.get('course_num') }}
 </body>
 </html>

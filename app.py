@@ -12,9 +12,14 @@ def hello():  # put application's code here
 @app.route('/about')
 def about():  # put application's code here
     return render_template('about.html')
+@app.route('/contact', methods= ['GET', 'POST'])
+def contact():  # put application's code here
+    if request.method == 'POST':
+        return render_template('contact.html', form_submitted=True)
+    else:
+        return render_template('contact.html')
 @app.route('/favorite-course')
 def favoritecourse():  # put application's code here
-    print('You entered your favorite course as:' + request.args.get('subject') + request.args.get('course_num'))
     return render_template('favorite-course.html')
 
 
