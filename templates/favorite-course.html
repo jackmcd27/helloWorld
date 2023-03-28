@@ -7,12 +7,12 @@
 <body>
 {% extends 'base.html' %}
 
-
-{% block page_head %} This was your favorite course {% endblock %}
+{% block page_head %}Jack McDonough -  This was your favorite course {% endblock %}
 
 {% block page_content %}
-
+<div class = "bluebg">
 You entered your favorite course as: {{ request.args.get('subject') }} {{ request.args.get('course_num') }}
 {% endblock %}
+</div>
 </body>
 </html>
