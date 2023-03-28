@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block page_title %} Contact {% endblock %}</title>
 </head>
 <body>
+{% extends 'base.html' %}
+{% block page_head %} Contact Page {% endblock %}
+{% block page_content %}
 {% if form_submitted %}
+
     <div class = "col-12">
-    <h1>You completed the form</h1>
+    <p>You completed the form</p>
     </div>
     <div class = "col-6">
         <p>First Name:</p>
@@ -58,5 +62,6 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endif %}
+{% endblock %}
 </body>
 </html>
