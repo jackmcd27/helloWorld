@@ -46,11 +46,11 @@ def student_create():
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         major_id = request.form['major_id']
-
+        email = request.form['email']
         birth_date = request.form['birth_date']
         is_honors = True if 'is_honors' in request.form else False
 
-        student = Student(first_name=first_name, last_name=last_name, major_id=major_id,
+        student = Student(first_name=first_name, last_name=last_name, major_id=major_id, email=email,
                           birth_date=dt.strptime(birth_date, '%Y-%m-%d'), is_honors=is_honors)
         db.session.add(student)
         db.session.commit()
@@ -82,6 +82,7 @@ def student_edit(student_id):
             student.first_name = request.form['first_name']
             student.last_name = request.form['last_name']
             student.major_id = request.form['major_id']
+            student.email = request.form['email']
             student.birthdate = dt.strptime(request.form['birth_date'], '%Y-%m-%d')
             student.num_credits_completed = request.form['num_credits_completed']
             student.gpa = request.form['gpa']
@@ -112,21 +113,27 @@ def student_delete(student_id):
 
 @app.route('/')
 def home():
+
     return redirect(url_for('student_view_all'))
+
 
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
 
-        # Execute only once! Initial loading of available majors
 
-        #majors = ['Accounting', 'Finance', 'Information Systems', 'International Business', 'Management', \
-               #     'Operations Management & Business Analytics', 'Supply Chain Management']
-      #  for each_major in majors:
-          #  print(each_major)
-         ##   amajor = Major(major=each_major)
-          #  db.session.add(amajor)
-          #  db.session.commit()
+    # Execute only once! Initial loading of available majors
 
+
+    # Execute only once! Initial loading of available majors
+        '''
+        majors = ['Accounting', 'Finance', 'Information Systems', 'International Business', 'Management', \
+                    'Operations Management & Business Analytics', 'Supply Chain Management']
+        for each_major in majors:
+            print(each_major)
+            amajor = Major(major=each_major)
+            db.session.add(amajor)
+            db.session.commit()
+            '''
     app.run()
