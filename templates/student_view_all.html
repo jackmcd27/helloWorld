@@ -37,6 +37,7 @@
         <tr>
             <td><a href="{{ url_for('student_view', student_id=each_student['student_id']) }}">{{ each_student['last_name'] }}</a></td>
             <td>{{ each_student['first_name'] }}</td>
+            <td>{{ each_student['email'] }} </td>
             <td>{{ each_major['major'] }}</td>
             <td>{{ 'Yes' if each_student['is_honors'] == 1 else 'No' }}</td>
             <td>
@@ -44,6 +45,7 @@
                 &nbsp;
                 <a href="{{ url_for('student_delete', student_id=each_student['student_id']) }}" class="btn btn-secondary" role="button">Delete</a>
             </td>
+
         </tr>
         {% endfor %}
     </table>
